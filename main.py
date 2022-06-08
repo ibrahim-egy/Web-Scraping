@@ -2,9 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-
 url = "https://www.elnekhelytechnology.com/index.php?search=graphics+Card&submit_search=&route=product%2Fsearch&page=2"
-
 
 header = {
     "Accept-Language": "en-US,en;q=0.9",
@@ -17,7 +15,6 @@ soup = BeautifulSoup(response, 'html.parser')
 
 items = soup.select("div h4 > a")
 prices = soup.find_all("span", class_="price-new")
-
 
 names = [name.get_text() for name in items]
 links = [item["href"] for item in items]
