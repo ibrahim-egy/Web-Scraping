@@ -15,14 +15,17 @@ soup = BeautifulSoup(response, 'html.parser')
 
 items = soup.select("div h4 > a")
 prices = soup.find_all("span", class_="price-new")
+images = soup.find_all('img', class_='img-1')
 
 names = [name.get_text() for name in items]
 links = [item["href"] for item in items]
 prices = [price.get_text().strip() for price in prices]
+img_links = [image['data-src'] for image in images]
 
 data = {
     "Names": names,
     "Links": links,
+    "Image_URL": img_links,
     "Prices": prices,
 }
 
